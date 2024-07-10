@@ -216,6 +216,7 @@ fn compile_fixed(
             status: config.status.for_path(&fixed_path),
         };
         let mut cmd = fixed_config.build_command(build_manager)?;
+        cmd.arg("--cfg=fixed");
         cmd.arg("--crate-name").arg(&crate_name);
         let output = cmd.output().unwrap();
         let result = if output.status.success() {
